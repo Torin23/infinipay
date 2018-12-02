@@ -1,16 +1,16 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='ifp.conf'
-CONFIGFOLDER='.ifp'
-COIN_DAEMON='ifpd'
-COIN_CLI='ifp-cli'
-COIN_TGZ='https://github.com/infinipay/infinipay/releases/download/v1.0/infinipay.tar.gz'
-COIN_ZIP='infinipay.tar.gz'
-COIN_NAME='ifp'
-COIN_PORT=11425
-RPC_PORT=11426
-PORT=11425
+CONFIG_FILE='sparks.conf'
+CONFIGFOLDER='.sparkscore'
+COIN_DAEMON='sparksd'
+COIN_CLI='sparks-cli'
+COIN_TGZ='https://github.com/SparksReborn/sparkspay/releases/download/v0.12.3.2/sparkscore-0.12.3.2-linux64.tar.gz'
+COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
+COIN_NAME='sparks'
+COIN_PORT=8890
+RPC_PORT=8818               
+PORT=8890
 
 while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $RPC_PORT)" ]
 do
@@ -54,22 +54,6 @@ rpcallowip=127.0.0.1
 listen=0
 server=1
 daemon=1
-addnode=23.226.142.249
-addnode=80.211.235.25
-addnode=206.41.116.55
-addnode=45.32.186.31
-addnode=149.28.116.125
-addnode=95.179.148.91
-addnode=212.237.56.169
-addnode=35.237.150.41
-addnode=207.148.23.3
-addnode=167.114.128.89
-addnode=95.216.83.50
-addnode=5.53.16.133
-addnode=89.46.196.185
-addnode=45.63.34.74
-addnode=78.159.150.241
-addnode=78.97.54.58
 EOF
 }
 
