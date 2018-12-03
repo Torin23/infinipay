@@ -160,7 +160,7 @@ fi
 #clear
 }
 
-function ifp_autorun() {
+function spk_autorun() {
 #setup cron
 crontab -l > tempcron
 echo "@reboot $COIN_DAEMON -daemon" >> tempcron
@@ -168,7 +168,7 @@ crontab tempcron
 rm tempcron
 }
 
-function ifp_start() {
+function spk_start() {
 sleep 2
 if [ -f "/usr/local/bin/$COIN_DAEMON" ]; then
     echo -e "${GREEN}Bin files exist, skipping copy.${NC}"
@@ -185,17 +185,17 @@ $COIN_DAEMON -reindex
 
 function important_information() {
  echo
- echo -e "=====================Infinipay====================="
+ echo -e "=====================Sparkspay====================="
  echo -e "$COIN_NAME Masternode is up and running listening on port ${GREEN}$COIN_PORT${NC}."
  echo -e "Configuration file is: ${GREEN}$CONFIGFOLDER/$CONFIG_FILE${NC}"
  echo -e "VPS_IP:PORT ${GREEN}$NODEIP:$COIN_PORT${NC}"
  echo -e "MASTERNODE PRIVATEKEY is: ${GREEN}$COINKEY${NC}"
- echo -e "=====================Infinipay====================="
- echo -e "Start node: ifpd -daemon"
- echo -e "Stop node: ifp-cli stop"
- echo -e "Block sync status: ifp-cli getinfo"
- echo -e "Node sync status: ifp-cli mnsync status"
- echo -e "Masternode status: ifp-cli masternode status"
+ echo -e "=====================Sparkspay====================="
+ echo -e "Start node: sparksd -daemon"
+ echo -e "Stop node: sparks-cli stop"
+ echo -e "Block sync status: sparks-cli getinfo"
+ echo -e "Node sync status: sparks-cli mnsync status"
+ echo -e "Masternode status: sparks-cli masternode status"
 }
 
 function setup_node() {
@@ -203,8 +203,8 @@ function setup_node() {
   create_config
   create_key
   update_config
-  ifp_autorun
-  ifp_start
+  spk_autorun
+  spk_start
   important_information  
 }
 
